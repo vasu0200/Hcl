@@ -1,7 +1,7 @@
-export class UserRole {
+export class Location {
 	id: string;
-	userId: string;
-	roleId: string;
+	name?: string;
+	address?: string;
 	createdBy?: string;
 	createdAt: Date;
 	updatedBy?: string;
@@ -10,8 +10,8 @@ export class UserRole {
 
 	constructor(
 		id: string,
-		userId: string,
-		roleId: string,
+		name?: string,
+		address?: string,
 		createdBy?: string,
 		createdAt?: Date,
 		updatedBy?: string,
@@ -19,8 +19,8 @@ export class UserRole {
 		deleted: boolean = false,
 	) {
 		this.id = id;
-		this.userId = userId;
-		this.roleId = roleId;
+		this.name = name;
+		this.address = address;
 		this.createdBy = createdBy;
 		this.createdAt = createdAt || new Date();
 		this.updatedBy = updatedBy;

@@ -2,6 +2,8 @@
 import express, { Application, NextFunction, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import roles from '@Routes/role.route';
+import location from '@Routes/location.route';
 import tenants from '@Routes/tenant.route';
 import login from '@Routes/login.route';
 import users from '@Routes/user.route';
@@ -54,15 +56,17 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 // server-root
 app.get('/', (req: Request, res: Response) => {
-	res.send(`<html><body>HCLOGISTICS API SERVICE IS RUNNING</body></html>`);
+	res.send(`<html><body>HMLOGISTICS API SERVICE IS RUNNING</body></html>`);
 });
 
 // swagger
 app.use('/api/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // load routes
+app.use('/api/roles', roles);
+app.use('/api/locations', location);
 app.use('/api/tenants', tenants);
-app.use('/api/login', login);
+app.use('/api/auth', login);
 app.use('/api/users', users);
 app.use('/api/otps', otps);
 
